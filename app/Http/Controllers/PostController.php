@@ -29,7 +29,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|max:255',
+            'author' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        Post::create($data);
+
+        return redirect()->route('admin.posts.index')->with('success');
     }
 
     /**
@@ -37,7 +45,8 @@ class PostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.show', compact('post'));
     }
 
     /**
@@ -45,7 +54,8 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post = Post::findOrFail($id);
+        return view('posts.edit', compact('post'));
     }
 
     /**
@@ -53,7 +63,16 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->validate([
+            'title' => 'required|max:255',
+            'author' => 'required|max:255',
+            'content' => 'required',
+        ]);
+
+        $post = Post::findOrFail($id);
+        $post->update($data);
+
+        return redirect()->route('admin.posts.index')->with('success');
     }
 
     /**
