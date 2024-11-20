@@ -11,13 +11,13 @@
                 <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Crea un nuovo progetto</a>
             </div> --}}
 
-            <div class="row justify-content-center">
+            {{-- <div class="row justify-content-center">
 
                 <div class="col-12 text-center my-4">
 
                     <a href="{{ route('posts.create') }}" class="btn btn-primary">create a new post:</a>
                     {{-- <a href="{{ route('posts.show', $post->id) }}" class="btn btn-info">Visualizza Dettagli</a> --}}
-                </div>
+                {{-- </div> --}}
 
             @forelse ($posts as $post)
                 <div class="col-md-4 mb-4 d-flex align-items-stretch">
